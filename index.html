@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Light Tabs for PROTOTYPE by CHIMO</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <style>
+        .tabs ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        .tabs ul li {
+            list-style: none;
+            font-family: Lato-Bold;
+            font-size: 30px;
+            color: rgba(0, 0, 0, 0.40);
+            letter-spacing: 0;
+            margin-right: 60px;
+        }
+        
+        .tabs ul li.active {
+            font-family: Lato-Bold;
+            font-size: 30px;
+            color: #000000;
+            letter-spacing: 0;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: flex;
+        }
+    </style>
+
+        <div class="tabs">
+            <ul class="tabs-list">
+                <li class="active tab-name" data-group="content-group" data-content="one">one</li>
+                <li class="tab-name" data-group="content-group" data-content="two">two</li>
+                <li class="tab-name" data-group="content-group" data-content="three">three</li>
+            </ul>
+        </div>
+    <div class="tab-content active" id="one" data-group-item="content-group">one content</div>
+    <div class="tab-content" id="two" data-group-item="content-group">two content</div>
+    <div class="tab-content" id="three" data-group-item="content-group">three content</div>
+
+
+    <script>
+        $(function() {
+            $('li.tab-name').click(function() {
+                var group = $(this).attr('data-group');
+                content = $(this).attr('data-content');
+                $(document).find($('div[data-group-item="' + group + '"]')).removeClass('active');
+                $(document).find($('div#' + content + '')).addClass('active');
+            })
+        })
+    </script>
+</body>
+
+</html>
